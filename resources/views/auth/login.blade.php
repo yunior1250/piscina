@@ -57,11 +57,10 @@
                         <div
                             class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
                             <div class="position-relative bg-gradient-info h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                                style="background-image: url('https://media.istockphoto.com/id/1271978584/es/foto/swimming-pigs.jpg?s=612x612&w=0&k=20&c=R64DgNFawsmR1D6gYc_7i3-Munohz1DTNWulcxeTWpw=');
-              background-size: cover;">
+                                style="background-image: url('https://scontent.fvvi1-1.fna.fbcdn.net/v/t39.30808-1/316683967_109743038627702_1616624302417732076_n.jpg?stp=c20.20.200.200a_dst-jpg_p240x240&_nc_cat=111&ccb=1-7&_nc_sid=c6021c&_nc_ohc=uRFOGvghgLYAX9GfoyW&_nc_ht=scontent.fvvi1-1.fna&oh=00_AfAj26J8z4ZW2klz7bCzliD26G7Ygv5DOORY7X9ITEtnfQ&oe=6472367B">
                                 <span class="mask bg-gradient-info opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Piscina el Cochi Loco"</h4>
-                                <p class="text-white position-relative">Para vos que no te quieren en tu casa oles y tumbas ha cochi .Si Si ha vos te hablos cochino beni ha nuestra piscina el Cochi Loco y no seras el unico </p>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Balneario playa carive"</h4>
+                                <p class="text-white position-relative">Santa Cruz</p>
                             </div>
                         </div>
                     </div>
