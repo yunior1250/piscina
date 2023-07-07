@@ -26,6 +26,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\PiscinaController;
+use App\Http\Controllers\ProcesoController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\SucursalController;
 
@@ -65,6 +66,13 @@ ambiente  */
 Route::get('/ambientes', [AmbienteController::class, 'index'])->name('ambientes.index');
 Route::get('/ambientes/create', [AmbienteController::class, 'create'])->name('ambientes.create');
 Route::post('/ambientes', [AmbienteController::class, 'store'])->name('ambientes.store');
+
+/* 
+ambiente  */
+Route::get('/procesos', [ProcesoController::class, 'index'])->name('procesos.index');
+Route::get('/procesos/create', [ProcesoController::class, 'create'])->name('procesos.create');
+Route::post('/procesos', [ProcesoController::class, 'store'])->name('procesos.store');
+
 /*otro mame de todos modos otro mame */
 
 Route::group(['middleware' => 'auth'], function () {
