@@ -34,6 +34,9 @@ class ProcesoController extends Controller
         $proceso->cloro_esperado = $request->cloro_esperado;
         $proceso->cloro_final = $request->cloro_final;
         $proceso->ph_final = $request->ph_final;
+        $proceso->urlPH = $request->urlPH;
+        
+        $proceso->urlCL = $request->urlCL;
         $proceso->voljmen_pro = $request->volumen_pro;
 
 
