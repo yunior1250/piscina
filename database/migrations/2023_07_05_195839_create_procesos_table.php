@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('procesos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('nombre')->nullable();
+            $table->string('descripcion')->nullable();
             $table->decimal('ph_inicial',8,2)->nullable();
-            $table->decimal('ph_esperado',8,2);
+            $table->decimal('ph_esperado',8,2)->nullable();
             $table->decimal('cloro_inicial',8,2)->nullable();
-            $table->decimal('cloro_esperado',8,2);
-            $table->decimal('ph_final',8,2);
-            $table->decimal('cloro_final',8,2);
-            $table->decimal('volumen_pro',8,2);
-            $table->string('urlPH');
-            $table->string('urlCL');
-            $table->unsignedBigInteger('piscina_id');                            //foranea
-            $table->foreign('piscina_id')->on('piscinas')->references('id')->onDelete('cascade');
-            $table->string('imagen')->nullable();
+            $table->decimal('cloro_esperado',8,2)->nullable();
+            $table->decimal('ph_final',8,2)->nullable();
+            $table->decimal('cloro_final',8,2)->nullable();
+            $table->decimal('volumen_pro',8,2)->nullable();
+            $table->string('urlPH')->nullable();
+            $table->string('urlCL')->nullable();
+            /* $table->unsignedBigInteger('piscina_id');                            //foranea
+            $table->foreign('piscina_id')->on('piscinas')->references('id')->onDelete('cascade'); */
+            //$table->string('imagen')->nullable();
             $table->timestamps();
         });
     }
