@@ -114,22 +114,22 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <label for="nombresucursal" class="form-label">Nombre de la Piscinas</label>
                             <input type="text" name="nombresucursal" class="form-control" id="nombresucursal" require>
+                        </div> -->
+                        <div class="col-md-4">
+                            <label for="urlPH" class="form-label">PH Inicial</label>
+                            <input type="file" name="urlPH" class="form-control" id="urlPH" require>
                         </div>
                         <div class="col-md-4">
-                            <label for="telefonosucursal" class="form-label">PH Inicial</label>
-                            <input type="file" name="telefonosucursal" class="form-control" id="telefonosucursal" require>
+                            <label for="urlCL" class="form-label">Cloro Inicial</label>
+                            <input type="file" name="urlCL" class="form-control" id="urlCL" require>
                         </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <label for="telefonosucursal" class="form-label">PH Esperado</label>
                             <input type="number" name="telefonosucursal" class="form-control" id="telefonosucursal" require>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="telefonosucursal" class="form-label">Cloro Inicial</label>
-                            <input type="file" name="telefonosucursal" class="form-control" id="telefonosucursal" require>
-                        </div>
+                        </div>                        
                         <div class="col-md-4">
                             <label for="telefonosucursal" class="form-label">Cloro Esperado</label>
                             <input type="number" name="telefonosucursal" class="form-control" id="telefonosucursal" require>
@@ -137,10 +137,10 @@
                         <div class="col-md-4">
                             <label for="direccionsucursal" class="form-label">Volumen</label>
                             <input type="text" name="direccionsucursal" class="form-control" id="direccionsucursal" require>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="descripcionsucursal" class="form-label">Descripción dela Sucursal</label>
                         <textarea class="form-control" name="descripcionsucursal" id="descripcionsucursal" rows="3" require></textarea>
                     </div>
@@ -148,7 +148,7 @@
                     <div class="mb-4">
                         <label for="archivosucursal" class="form-label">Subir Archivos</label>
                         <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-info">Añadir Sucursal</button>
                 </form>
             </div>
