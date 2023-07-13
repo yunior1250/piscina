@@ -30,13 +30,13 @@ class ProcesoController extends Controller
         $proceso = new Proceso();
         $proceso->nombre = $request->nombreproceso;
         $proceso->descripcion = $request->descripcionproceso;
-      
+
         $proceso->ph_esperado = $request->ph_esperado;
- 
+
         $proceso->cloro_esperado = $request->cloro_esperado;
 
         $proceso->volumen_pro = $request->input('volumen_pro');
-  
+
         $path = $request->file('urlPH')->store('piscina', 's3');
         $proceso->urlPH = Storage::disk('s3')->url($path);
         $path2 = $request->file('urlCL')->store('piscina', 's3');
@@ -48,8 +48,8 @@ class ProcesoController extends Controller
         $proceso->ph_inicial = $this->CalculatePH($DominantColorsPH);
         $proceso->cloro_inicial = $this->CalculateCL($DominantColorsCL);
 
-        
-    
+
+
         $proceso->ph_final = $proceso->calcularCantidadpH();
         $proceso->cloro_final = $proceso->calcularCantidadCloro();
         $proceso->save();
@@ -112,19 +112,6 @@ class ProcesoController extends Controller
             } else if ($color['CSSColor'] === 'sienna') {
                 $cl = 5;
             }
-            else if ($color['CSSColor'] === 'silver') {
-                $cl = 0.5;
-            }
-            else if ($color['CSSColor'] === 'darkgrey') {
-                $cl = 1;
-            }
-            else if ($color['CSSColor'] === 'darkkhaki') {
-                $cl = 1.5;
-            }
-            else if ($color['CSSColor'] === 'darkkhaki') {
-                $cl = 1.5;
-            }
-
         }
         return $cl;
     }
