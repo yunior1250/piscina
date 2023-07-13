@@ -28,20 +28,15 @@ class ProcesoController extends Controller
     public function store(Request $request)
     {
         $proceso = new Proceso();
-        /*$proceso->nombre = $request->nombreproceso;
+        $proceso->nombre = $request->nombreproceso;
         $proceso->descripcion = $request->descripcionproceso;
-        //$proceso->ph_inicial = $request->ph_inicial;
+      
         $proceso->ph_esperado = $request->ph_esperado;
-        //$proceso->cloro_inicial = $request->cloro_inicial;
+ 
         $proceso->cloro_esperado = $request->cloro_esperado;
-        $proceso->cloro_final = $request->cloro_final;
-        $proceso->ph_final = $request->ph_final;
-        $proceso->urlPH = $request->urlPH;
-        
-        $proceso->urlCL = $request->urlCL;
-        $proceso->voljmen_pro = $request->volumen_pro;
-        $proceso->voljmen_pro = $request->volumen_pro;*/
 
+        $proceso->volumen_pro = $request->input('volumen_pro');
+  
         $path = $request->file('urlPH')->store('piscina', 's3');
         $proceso->urlPH = Storage::disk('s3')->url($path);
         $path2 = $request->file('urlCL')->store('piscina', 's3');
@@ -50,19 +45,13 @@ class ProcesoController extends Controller
         $DominantColorsPH = $this->ImagePropeties($proceso->urlPH);
         $DominantColorsCL = $this->ImagePropeties($proceso->urlCL);
 
-        $proceso->ph_inicial =$this->CalculatePH($DominantColorsPH);
-        $proceso->cloro_inicial =$this->CalculateCL($DominantColorsCL);
+        $proceso->ph_inicial = $this->CalculatePH($DominantColorsPH);
+        $proceso->cloro_inicial = $this->CalculateCL($DominantColorsCL);
 
-        /*$proceso->fecha_fin = $request->fechafinreserva;
-        // $ambiente->imagen = $request->archivoambiente;
-        //   $ambiente->organizadorId = Auth::user()->id;
-        if ($request->hasFile('archivoambiente')) {
-            $imagen = $request->file('archivoambiente');
-            $rutaImagen = $imagen->store('public/imagenes'); // Cambia la ruta según tus necesidades
-            $proceso->imagen = $rutaImagen;
-        }
-        //$sucursal = Sucursal::findOrFail($request->sucursal);
-        $proceso->piscina_id = $request->input('piscina_id');*/
+        
+    
+        $proceso->ph_final = $proceso->calcularCantidadpH();
+        $proceso->cloro_final = $proceso->calcularCantidadCloro();
         $proceso->save();
 
         return redirect()->route('procesos.index');
@@ -70,8 +59,8 @@ class ProcesoController extends Controller
 
     private function ImagePropeties($url)
     {
-        //$url= 'https://sw1-proyects.s3.amazonaws.com/piscina/KjOgujZwnZ2IZ5TvpCCwy2DXYnx5iTPuiveGkoQ7.jpg';
-        $img=substr($url,38,strlen($url));        
+
+        $img = substr($url, 38, strlen($url));
         $client = new RekognitionClient([
             'region' => env('AWS_DEFAULT_REGION'),
             'version' => 'latest',
@@ -81,7 +70,7 @@ class ProcesoController extends Controller
             'Image' => [
                 'S3Object' => [
                     'Bucket' => env('AWS_BUCKET'), //'sw1-proyects',
-                    'Name' => $img,//'piscina/deU3rkxk1Vw5BoI2MJYkKO6MRNMBF6myJDFPb3DC.jpg' 
+                    'Name' => $img, //'piscina/deU3rkxk1Vw5BoI2MJYkKO6MRNMBF6myJDFPb3DC.jpg' 
                 ],
             ],
             'Features' => [
@@ -99,28 +88,43 @@ class ProcesoController extends Controller
         return $resultLabels['DominantColors'];
     }
 
-    private function CalculatePH($colors){      
-        $ph=0;  
+    private function CalculatePH($colors)
+    {
+        $ph = 0;
         foreach ($colors as $color) {
-            if($color['CSSColor'] === 'mediumvioletred') {
-                $ph= 7.8;
-            }else if ($color['CSSColor'] === 'thistle') {
-                $ph= 7.6;
-            }else if ($color['CSSColor'] === 'palevioletred') {
+            if ($color['CSSColor'] === 'mediumvioletred') {
+                $ph = 7.8;
+            } else if ($color['CSSColor'] === 'thistle') {
+                $ph = 7.6;
+            } else if ($color['CSSColor'] === 'palevioletred') {
                 $ph = 7.4;
             }
         }
         return $ph;
     }
 
-    private function CalculateCL($colors){        
-        $cl=0;
+    private function CalculateCL($colors)
+    {
+        $cl = 0;
         foreach ($colors as $color) {
             if ($color['CSSColor'] === 'saddlebrown') {
-                $cl= 3;
+                $cl = 3;
             } else if ($color['CSSColor'] === 'sienna') {
-                $cl= 5;
+                $cl = 5;
             }
+            else if ($color['CSSColor'] === 'silver') {
+                $cl = 0.5;
+            }
+            else if ($color['CSSColor'] === 'darkgrey') {
+                $cl = 1;
+            }
+            else if ($color['CSSColor'] === 'darkkhaki') {
+                $cl = 1.5;
+            }
+            else if ($color['CSSColor'] === 'darkkhaki') {
+                $cl = 1.5;
+            }
+
         }
         return $cl;
     }
@@ -147,3 +151,23 @@ class ProcesoController extends Controller
         return redirect()->route('procesos.index');
     }
 }
+
+
+
+        /* $proceso->ph_final = $request->ph_final;
+        $proceso->cloro_final = $request->cloro_final; */
+        /*    $proceso->urlPH = $request->urlPH;
+        
+        $proceso->urlCL = $request->urlCL; */
+       
+        // $piscina->sucursal_id = $request->input('sucursal_id');
+     // Lógica para el pH y cloro final
+      
+
+ /*        $cloroFinalCalculado = $proceso->calcularCantidadCloro($proceso->cloro_inicial, $proceso->cloro_final, $proceso->cloro_esperado);
+        $proceso->cloro_final = $cloroFinalCalculado['cantidadCloro'];
+
+        $phFinalCalculado = $proceso->calcularCantidadpH($proceso->ph_inicial, $proceso->ph_final, $proceso->ph_esperado);
+        $proceso->ph_final = $phFinalCalculado['cantidadPH']; */
+        /* 
+        $proceso->piscina_id = $request->input('piscina_id'); */

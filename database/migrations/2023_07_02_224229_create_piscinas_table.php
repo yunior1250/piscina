@@ -25,6 +25,8 @@ return new class extends Migration
             $table->decimal('radio', 8, 2);
             $table->decimal('volumen', 8, 2);
             $table->string('imagen')->nullable();
+            $table->unsignedBigInteger('sucursal_id');                            //foranea
+            $table->foreign('sucursal_id')->on('sucursales')->references('id');
             $table->timestamps();
         });
     }

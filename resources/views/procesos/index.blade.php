@@ -118,15 +118,15 @@
                     {{-- Si Fotografo->id == Afiliacion->User  --}}
                     <div class="row flex-wrap">
                         <!-- sucursal -->
-                        @foreach ($procesos as $procceso)
+                        @foreach ($procesos as $proceso)
                             <div class="col-md-4 mb-4 ">
                                 <div class="card bg-info" style="margin-right: 1rem;">
-                                    <img src="https://www.serro.mg.gov.br/fotos/26a9465eb4cddb0303ed62911241226c.jpg"
+                                    <img src="https://scontent.fcbb2-1.fna.fbcdn.net/v/t39.30808-6/316683967_109743038627702_1616624302417732076_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=YbJBmKXQXk0AX_FbYFz&_nc_ht=scontent.fcbb2-1.fna&oh=00_AfDf6KMZjpH8h2uwpUe5YygwRauRcv8Z0i_SeC4Xc0zycg&oe=64AE03FD"
                                         class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title"style="color: #ffffff;">{{ $proceso->nombre }}</h5>
-                                        <p class="card-text" style="color: #ffffff;">{{ $proceso->nombre}}</p>
-                                        <p class="card-text" style="color: #ffffff;">{{ $proceso->nombre }}</p>
+                                        <p class="card-text" style="color: #ffffff;"> PH:  {{ $proceso->ph_final}} ml</p>
+                                        <p class="card-text" style="color: #ffffff;">CLORO: {{ $proceso->cloro_final }} gr</p>
 
                                     {{-- 
                                         <a href="{{$sucursal->direccion  }}"target="_blank" ><p   class="card-text" style="color: #ffffff;">Direccion</p></a>

@@ -19,12 +19,12 @@ return new class extends Migration
             $table->decimal('ph_esperado',8,2)->nullable();
             $table->decimal('cloro_inicial',8,2)->nullable();
             $table->decimal('cloro_esperado',8,2)->nullable();
-            $table->decimal('ph_final',8,2)->nullable();
-            $table->decimal('cloro_final',8,2)->nullable();
+            $table->string('ph_final')->nullable();
+            $table->string('cloro_final')->nullable();
             $table->decimal('volumen_pro',8,2)->nullable();
             $table->string('urlPH')->nullable();
             $table->string('urlCL')->nullable();
-            /* $table->unsignedBigInteger('piscina_id');                            //foranea
+          /*   $table->unsignedBigInteger('piscina_id');                            //foranea
             $table->foreign('piscina_id')->on('piscinas')->references('id')->onDelete('cascade'); */
             //$table->string('imagen')->nullable();
             $table->timestamps();

@@ -9,7 +9,7 @@ class Piscina extends Model
 {
     use HasFactory;
     protected $table = 'piscinas';
-    protected $fillable = ['nombre', 'descripcion', 'tipo', 'largo', 'ancho', 'profundidad', 'radio', 'volumen','imagen'];
+    protected $fillable = ['nombre', 'descripcion', 'tipo', 'largo', 'ancho', 'profundidad', 'radio', 'volumen', 'imagen'];
 
 
 
@@ -25,8 +25,21 @@ class Piscina extends Model
 
         return 0; // Tipo de piscina desconocido
     }
-
     private function calcularVolumenRectangular()
+    {
+        $volumenMetrosCubicos = $this->largo * $this->ancho * $this->profundidad;
+        $volumenLitros = $volumenMetrosCubicos * 1000;
+        return $volumenLitros;
+    }
+
+    private function calcularVolumenCircular()
+    {
+        $volumenMetrosCubicos = pi() * pow($this->radio, 2) * $this->profundidad;
+        $volumenLitros = $volumenMetrosCubicos * 1000;
+        return $volumenLitros;
+    }
+
+    /* private function calcularVolumenRectangular()
     {
         return $this->largo * $this->ancho * $this->profundidad;
     }
@@ -34,5 +47,5 @@ class Piscina extends Model
     private function calcularVolumenCircular()
     {
         return pi() * pow($this->radio, 2) * $this->profundidad;
-    }
+    } */
 }

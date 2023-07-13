@@ -79,6 +79,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-3 col-sm-6">
                 <div class="card">
                     <div class="card-body p-3">
@@ -114,10 +115,10 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                        <!-- <div class="col-md-4">
-                            <label for="nombresucursal" class="form-label">Nombre de la Piscinas</label>
-                            <input type="text" name="nombresucursal" class="form-control" id="nombresucursal" require>
-                        </div> -->
+                        <div class="col-md-4">
+                            <label for="nombreproceso" class="form-label">Nombre del proceso</label>
+                            <input type="text" name="nombreproceso" class="form-control" id="nombreproceso" require>
+                        </div>
                         <div class="col-md-4">
                             <label for="urlPH" class="form-label">PH Inicial</label>
                             <input type="file" name="urlPH" class="form-control" id="urlPH" require>
@@ -126,30 +127,51 @@
                             <label for="urlCL" class="form-label">Cloro Inicial</label>
                             <input type="file" name="urlCL" class="form-control" id="urlCL" require>
                         </div>
-                        <!-- <div class="col-md-4">
-                            <label for="telefonosucursal" class="form-label">PH Esperado</label>
-                            <input type="number" name="telefonosucursal" class="form-control" id="telefonosucursal" require>
-                        </div>                        
                         <div class="col-md-4">
-                            <label for="telefonosucursal" class="form-label">Cloro Esperado</label>
-                            <input type="number" name="telefonosucursal" class="form-control" id="telefonosucursal" require>
+                            <label for="ph_esperado" class="form-label">PH Esperado</label>
+                            <select name="ph_esperado" class="form-control" id="ph_esperado" required>
+                                <option value="7.2">7.2</option>
+                                <option value="7.3">7.3</option>
+                                <option value="7.4">7.4</option>
+                                <option value="7.5">7.5</option>
+                                <option value="7.6">7.6</option>
+                                <option value="7.7">7.7</option>
+                                <option value="7.8">7.8</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="cloro_esperado" class="form-label">Cloro Esperado</label>
+                            <select name="cloro_esperado" class="form-control" id="cloro_esperado" required>
+                                <option value="1">1 ppm</option>
+                                <option value="1.5">1.5 ppm</option>
+                                <option value="2">2 ppm</option>
+                                <option value="2.5">2.5 ppm</option>
+                                <option value="3">3 ppm</option>
+                                <option value="5">5 ppm</option>
+                            </select>
                         </div>
                         <div class="col-md-4">
-                            <label for="direccionsucursal" class="form-label">Volumen</label>
-                            <input type="text" name="direccionsucursal" class="form-control" id="direccionsucursal" require>
-                        </div> -->
+                            <label for="volumen_pro" class="form-label">Piscina</label>
+                            <select name="volumen_pro" class="form-control" id="volumen_pro">
+                                @foreach ($piscinas as $piscina)
+                                    <option value="{{ $piscina->volumen }}">{{ $piscina->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
 
-                    <!-- <div class="mb-3">
-                        <label for="descripcionsucursal" class="form-label">Descripción dela Sucursal</label>
-                        <textarea class="form-control" name="descripcionsucursal" id="descripcionsucursal" rows="3" require></textarea>
+                    <div class="mb-3">
+                        <label for="descripcionproceso" class="form-label">Descripción dela Sucursal</label>
+                        <textarea class="form-control" name="descripcionproceso" id="descripcionproceso" rows="3" require></textarea>
                     </div>
-
-                    <div class="mb-4">
-                        <label for="archivosucursal" class="form-label">Subir Archivos</label>
-                        <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                    </div> -->
-                    <button type="submit" class="btn btn-info">Añadir Sucursal</button>
+                    <!--
+                                <div class="mb-4">
+                                    <label for="archivosucursal" class="form-label">Subir Archivos</label>
+                                    <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
+                                </div> -->
+                    <button type="submit" class="btn btn-info">Añadir proceso</button>
                 </form>
             </div>
         </div>

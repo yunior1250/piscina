@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Piscina;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 
 class PiscinaController extends Controller
@@ -14,7 +15,8 @@ class PiscinaController extends Controller
     }
     public function create()
     {
-        return view('piscinas.create');
+        $sucursales = Sucursal::all();
+        return view('piscinas.create',compact('sucursales'));
     }
     public function store(Request $request)
     {
@@ -30,7 +32,7 @@ class PiscinaController extends Controller
         // Calcular volumen
         $volumen = $piscina->calcularVolumen();
         $piscina->volumen = $volumen;
-
+        $piscina->sucursal_id = $request->input('sucursal_id');
         $piscina->save();
 
         return redirect()->route('piscinas.index')->with('success', 'Piscina creada exitosamente. Volumen: ' . $volumen);

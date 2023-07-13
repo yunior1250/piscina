@@ -124,8 +124,8 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="sucursal_id" class="form-label">Sucursal</label>
-                            <select name="sucursal_id" class="form-control" id="sucursal_id">
+                            <label for="evento_id" class="form-label">Sucursal</label>
+                            <select name="evento_id" class="form-control" id="evento_id">
                                 @foreach ($sucursales as $sucursal)
                                     <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
                                 @endforeach

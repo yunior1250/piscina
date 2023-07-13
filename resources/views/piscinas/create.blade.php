@@ -143,6 +143,14 @@
                             <label for="radiopiscina" class="form-label">Radio</label>
                             <input type="text" name="radiopiscina" class="form-control" id="radiopiscina" require>
                         </div>
+                        <div class="col-md-4">
+                            <label for="sucursal_id" class="form-label">Piscina</label>
+                            <select name="sucursal_id" class="form-control" id="sucursal_id">
+                                @foreach ($sucursales as $sucursal)
+                                    <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <div class="mb-3">
