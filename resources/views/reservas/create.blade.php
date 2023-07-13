@@ -154,10 +154,10 @@
                         <textarea class="form-control" name="descripcionreserva" id="descripcionreserva" rows="3" require></textarea>
                     </div>
 
-                    <div class="mb-4">
+                {{--     <div class="mb-4">
                         <label for="archivoambiente" class="form-label">Subir Archivos</label>
                         <input type="file" class="form-control" name="archivoambiente" id="archivoambiente">
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-info">Añadir ambiente</button>
                 </form>
             </div>

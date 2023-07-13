@@ -14,7 +14,7 @@ class Sucursal extends Model
         'descripcion',
         'telefono',
         'direccion',
-        'imagen',
+        
     ];
     protected $dates = [
         'fecha',

@@ -107,7 +107,7 @@
         </div>
         <div class="card mb-4" style="margin-top: 50px;">
             <div class="card-header pb-0">
-                <h6>Crear Piscina</h6>
+                <h6>Crear Sucursal</h6>
             </div>
             <div class="card-body">
                 <form action="{{ route('sucursales.store') }}" method="POST" role="form text-left"
@@ -132,11 +132,11 @@
                         <label for="descripcionsucursal" class="form-label">Descripción dela Sucursal</label>
                         <textarea class="form-control" name="descripcionsucursal" id="descripcionsucursal" rows="3" require></textarea>
                     </div>
-
+{{-- 
                     <div class="mb-4">
                         <label for="archivosucursal" class="form-label">Subir Archivos</label>
                         <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-info">Añadir Sucursal</button>
                 </form>
             </div>

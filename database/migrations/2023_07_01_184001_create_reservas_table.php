@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('precio');   
             $table->date('fecha_ini');
             $table->date('fecha_fin');
-            $table->string('imagen')->nullable();
             $table->unsignedBigInteger('ambiente_id');                            //foranea
             $table->foreign('ambiente_id')->on('ambientes')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

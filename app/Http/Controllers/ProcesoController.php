@@ -31,27 +31,27 @@ class ProcesoController extends Controller
         $proceso->nombre = $request->nombreproceso;
         $proceso->descripcion = $request->descripcionproceso;
 
-        $proceso->ph_esperado = $request->ph_esperado;
+        $proceso->ph_esperado = $request->ph_esperado;//imput fijos
 
-        $proceso->cloro_esperado = $request->cloro_esperado;
+        $proceso->cloro_esperado = $request->cloro_esperado;//imput fijos
 
-        $proceso->volumen_pro = $request->input('volumen_pro');
+        $proceso->volumen_pro = $request->input('volumen_pro');//input variable
 
-        $path = $request->file('urlPH')->store('piscina', 's3');
+        $path = $request->file('urlPH')->store('piscina', 's3');//guardar las imagenes del ph  en s3
         $proceso->urlPH = Storage::disk('s3')->url($path);
-        $path2 = $request->file('urlCL')->store('piscina', 's3');
+        $path2 = $request->file('urlCL')->store('piscina', 's3');//guardar las imagenes del cloro en s3
         $proceso->urlCL = Storage::disk('s3')->url($path2);
 
-        $DominantColorsPH = $this->ImagePropeties($proceso->urlPH);
+        $DominantColorsPH = $this->ImagePropeties($proceso->urlPH);//obtener los colores dominantes de la imagen del ph
         $DominantColorsCL = $this->ImagePropeties($proceso->urlCL);
 
-        $proceso->ph_inicial = $this->CalculatePH($DominantColorsPH);
-        $proceso->cloro_inicial = $this->CalculateCL($DominantColorsCL);
+        $proceso->ph_inicial = $this->CalculatePH($DominantColorsPH);//funcion de identificacion de colores de PH
+        $proceso->cloro_inicial = $this->CalculateCL($DominantColorsCL);//funcion de identificacion de colores de CL
 
 
 
-        $proceso->ph_final = $proceso->calcularCantidadpH();
-        $proceso->cloro_final = $proceso->calcularCantidadCloro();
+        $proceso->ph_final = $proceso->calcularCantidadpH();//calcular la cantidad de ph
+        $proceso->cloro_final = $proceso->calcularCantidadCloro();//calcular la cantidad de cloro
         $proceso->save();
 
         return redirect()->route('procesos.index');
@@ -69,7 +69,7 @@ class ProcesoController extends Controller
         $results = $client->detectLabels([
             'Image' => [
                 'S3Object' => [
-                    'Bucket' => env('AWS_BUCKET'), //'sw1-proyects',
+                    'Bucket' => env('AWS_BUCKET'), //'sw2-proyects',
                     'Name' => $img, //'piscina/deU3rkxk1Vw5BoI2MJYkKO6MRNMBF6myJDFPb3DC.jpg' 
                 ],
             ],

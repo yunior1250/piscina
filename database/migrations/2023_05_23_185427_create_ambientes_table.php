@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->integer('capacidad');
-            $table->string('imagen')->nullable();
+          
             $table->unsignedBigInteger('sucursal_id');                            //foranea
             $table->foreign('sucursal_id')->on('sucursales')->references('id');
             $table->timestamps();

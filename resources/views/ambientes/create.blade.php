@@ -124,8 +124,8 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="evento_id" class="form-label">Sucursal</label>
-                            <select name="evento_id" class="form-control" id="evento_id">
+                            <label for="sucursal_id" class="form-label">Sucursal</label>
+                            <select name="sucursal_id" class="form-control" id="sucursal_id">
                                 @foreach ($sucursales as $sucursal)
                                     <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
                                 @endforeach
@@ -139,10 +139,10 @@
                         <textarea class="form-control" name="descripcionambiente" id="descripcionambiente" rows="3" require></textarea>
                     </div>
 
-                    <div class="mb-4">
+                   {{--  <div class="mb-4">
                         <label for="archivoambiente" class="form-label">Subir Archivos</label>
                         <input type="file" class="form-control" name="archivoambiente" id="archivoambiente">
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-info">Añadir ambiente</button>
                 </form>
             </div>

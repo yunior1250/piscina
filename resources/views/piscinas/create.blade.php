@@ -157,11 +157,11 @@
                         <label for="descripcionpisicna" class="form-label">Descripción dela Sucursal</label>
                         <textarea class="form-control" name="descripcionpisicna" id="descripcionpisicna" rows="3" require></textarea>
                     </div>
-
+{{-- 
                     <div class="mb-4">
                         <label for="archivosucursal" class="form-label">Subir Archivos</label>
                         <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-info">Añadir Sucursal</button>
                 </form>
             </div>

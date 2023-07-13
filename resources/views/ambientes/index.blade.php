@@ -108,7 +108,7 @@
         <div class="col-12 mt-4">
             <div class="card mb-4" style="padding: 50px;">
                 <div class="card-body p-0">
-                    <h1 class="card-title pb-0 pt-0 m-0 mb-2" style="font-size: 2.4rem">ambientesss</h1>
+                    <h1 class="card-title pb-0 pt-0 m-0 mb-2" style="font-size: 2.4rem">Ambientes</h1>
                     <div class="d-flex justify-content-end mb-0">
                         <button type="button" class="btn btn-info">
                             <a href="{{ route('ambientes.create') }}" style="color: white"> <i class="fas fa-plus"> </i>

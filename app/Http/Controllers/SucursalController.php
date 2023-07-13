@@ -23,7 +23,7 @@ class SucursalController extends Controller
       $sucursal->descripcion = $request->descripcionsucursal;
       $sucursal->telefono = $request->telefonosucursal;
       $sucursal->direccion = $request->direccionsucursal;
-      $sucursal->imagen = $request->archivosucursal;
+      //$sucursal->imagen = $request->archivosucursal;
      // $sucursal->organizadorId = Auth::user()->id;
       $sucursal->save();
 

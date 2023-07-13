@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->integer('telefono');   
             $table->text('direccion');
-            $table->string('imagen');
+       
             $table->timestamps();
         });
     }
