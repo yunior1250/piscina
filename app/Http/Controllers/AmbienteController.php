@@ -47,14 +47,23 @@ class AmbienteController extends Controller
         return view('ambientes.show', compact('ambiente'));
     }
 
-    public function edit(Ambiente $ambiente)
+    public function edit( $id)
     {
-        return view('ambientes.edit', compact('ambiente'));
+
+        $sucursales = Sucursal::all();
+        $ambiente = Ambiente::findOrFail($id);
+        return view('ambientes.edit', compact('sucursales', 'ambiente'));
     }
 
-    public function update(Request $request, Ambiente $ambiente)
+    public function update(Request $request,  $id)
     {
-        $ambiente->update($request->all());
+        $ambiente =Ambiente::find($id) ;
+        $ambiente->nombre = $request->nombreambiente;
+        $ambiente->descripcion = $request->descripcionambiente;
+        $ambiente->capacidad = $request->capacidadambiente;
+        $ambiente->sucursal_id = $request->input('sucursal_id');
+        $ambiente->save();
+
         return redirect()->route('ambientes.index');
     }
 

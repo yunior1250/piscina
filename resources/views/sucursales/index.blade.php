@@ -124,15 +124,16 @@
                         @foreach ($sucursales as $sucursal)
                             <div class="col-md-4 mb-4 ">
                                 <div class="card bg-info" style="margin-right: 1rem;">
-                                    <img src="/img/playa.jpg"
-                                        class="card-img-top" alt="...">
+                                    <img src="/img/playa.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title"style="color: #ffffff;">{{ $sucursal->nombre }}</h5>
                                         <p class="card-text" style="color: #ffffff;">{{ $sucursal->descripcion }}</p>
 
-                                    
-                                        <a href="{{$sucursal->direccion  }}"target="_blank" ><p   class="card-text" style="color: #ffffff;">Direccion</p></a>
-                                    {{--     <p class="card-text"style="color: #ffffff;">{{ $sucursal->direccion }}
+
+                                        <a href="{{ $sucursal->direccion }}"target="_blank">
+                                            <p class="card-text" style="color: #ffffff;">Direccion</p>
+                                        </a>
+                                        {{--     <p class="card-text"style="color: #ffffff;">{{ $sucursal->direccion }}
                                         </p> --}}
                                         <p class="card-text"style="color: #ffffff;">{{ $sucursal->fecha }}
                                         </p>
@@ -141,9 +142,11 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
 
-                                                <a href=""><button type="button"
-                                                        class="btn btn-sm btn-outline-secondary bg-white">
+                                                <a href="{{ route('sucursales.edit', $sucursal->id) }}"><button
+                                                        type="button" class="btn btn-sm btn-outline-secondary">
                                                         <i class="fas fa-edit"></i> Editar </button></a>
+
+
 
                                                 <a href=""><button type="button"
                                                         class="btn btn-sm btn-outline-secondary bg-white">
@@ -151,9 +154,16 @@
 
 
 
-                                                <button type="button" class="btn btn-sm btn-outline-secondary bg-white">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </button>
+                                                <form action="{{ route('sucursales.destroy', $sucursal->id) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta sucursal?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-outline-secondary bg-white">
+                                                        <i class="fas fa-trash"></i> Eliminar
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

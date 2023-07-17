@@ -48,6 +48,22 @@ Route::get('/sucursales', [SucursalController::class, 'index'])->name('sucursale
 Route::get('/sucursales/create', [SucursalController::class, 'create'])->name('sucursales.create');
 Route::post('/sucursales', [SucursalController::class, 'store'])->name('sucursales.store');
 
+Route::get('/sucursales/{id}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
+Route::put('/sucursales/{id}', [SucursalController::class, 'update'])->name('sucursales.update');
+Route::delete('/sucursales/{id}', [SucursalController::class, 'destroy'])->name('sucursales.destroy');
+
+
+
+/* 
+ambiente  */
+Route::get('/ambientes', [AmbienteController::class, 'index'])->name('ambientes.index');
+Route::get('/ambientes/create', [AmbienteController::class, 'create'])->name('ambientes.create');
+Route::post('/ambientes', [AmbienteController::class, 'store'])->name('ambientes.store');
+
+Route::get('/ambientes/{id}/edit', [AmbienteController::class, 'edit'])->name('ambientes.edit');
+Route::put('/ambientes/{id}', [AmbienteController::class, 'update'])->name('ambientes.update');
+Route::delete('/ambientes/{id}', [AmbienteController::class, 'destroy'])->name('ambientes.destroy');
+
 
 
 /* piscinas  */
@@ -61,14 +77,12 @@ Route::get('/reservas', [ReservaController::class, 'index'])->name('reservas.ind
 Route::get('/reservas/create', [ReservaController::class, 'create'])->name('reservas.create');
 Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
 
-/* 
-ambiente  */
-Route::get('/ambientes', [AmbienteController::class, 'index'])->name('ambientes.index');
-Route::get('/ambientes/create', [AmbienteController::class, 'create'])->name('ambientes.create');
-Route::post('/ambientes', [AmbienteController::class, 'store'])->name('ambientes.store');
+Route::get('/reservas/{id}/edit', [ReservaController::class, 'edit'])->name('reservas.edit');
+Route::put('/reservas/{id}', [ReservaController::class, 'update'])->name('reservas.update');
+Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
 
 /* 
-ambiente  */
+Procesos  */
 Route::get('/procesos', [ProcesoController::class, 'index'])->name('procesos.index');
 Route::get('/procesos/create', [ProcesoController::class, 'create'])->name('procesos.create');
 Route::post('/procesos', [ProcesoController::class, 'store'])->name('procesos.store');
@@ -86,3 +100,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+

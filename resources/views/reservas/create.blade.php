@@ -103,11 +103,11 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
         <div class="card mb-4" style="margin-top: 50px;">
             <div class="card-header pb-0">
-                <h6>Crear ambiente</h6>
+                <h6>Crear reserva</h6>
             </div>
             <div class="card-body">
                 <form action="{{ route('reservas.store') }}" method="POST" role="form text-left"
@@ -127,7 +127,7 @@
                             <input type="date" name="fechainireserva" class="form-control" id="fechainireserva" require>
                         </div>
                         <div class="col-md-4">
-                            <label for="ambiente_id" class="form-label">Ambite</label>
+                            <label for="ambiente_id" class="form-label">Ambientes</label>
                             <select name="ambiente_id" class="form-control" id="ambiente_id">
                                 @foreach ($ambientes as $ambiente)
                                     <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
@@ -135,7 +135,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label for="user_id" class="form-label">Cliente</label>
+                            <label for="user_id" class="form-label">Clientes</label>
                             <select name="user_id" class="form-control" id="user_id">
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->username }}</option>
@@ -144,21 +144,16 @@
                         </div>
                         <div class="col-md-4">
                             <label for="fechafinreserva" class="form-label">Fecha Final</label>
-                            <input type="date" name="fechafinreserva" class="form-control" id="fechafinreserva" require>
+                            <input type="date" name="fechafinreserva" class="form-control" id="fechafinreserva"
+                                require>
                         </div>
-                        
                     </div>
-
                     <div class="mb-3">
-                        <label for="descripcionreserva" class="form-label">Descripción del ambiente</label>
+                        <label for="descripcionreserva" class="form-label">Descripción del reserva</label>
                         <textarea class="form-control" name="descripcionreserva" id="descripcionreserva" rows="3" require></textarea>
                     </div>
 
-                {{--     <div class="mb-4">
-                        <label for="archivoambiente" class="form-label">Subir Archivos</label>
-                        <input type="file" class="form-control" name="archivoambiente" id="archivoambiente">
-                    </div> --}}
-                    <button type="submit" class="btn btn-info">Añadir ambiente</button>
+                    <button type="submit" class="btn btn-info">Añadir reserva</button>
                 </form>
             </div>
         </div>

@@ -138,9 +138,12 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
 
-                                                <a href=""><button type="button"
-                                                        class="btn btn-sm btn-outline-secondary bg-white">
-                                                        <i class="fas fa-edit"></i> Editar </button></a>
+                                                <a href="{{ route('ambientes.edit', $ambiente->id) }}">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                                        <i class="fas fa-edit"></i> Editar
+                                                    </button>
+                                                </a>
+                                                
 
                                                 <a href=""><button type="button"
                                                         class="btn btn-sm btn-outline-secondary bg-white">

@@ -52,14 +52,26 @@ class ReservaController extends Controller
         return view('reservas.show', compact('reserva'));
     }
 
-    public function edit(Reserva $reserva)
+    public function edit( $id)
     {
-        return view('reservas.edit', compact('reserva'));
+        $ambientes = Ambiente::all();
+        $users = User::all();
+        $reserva = Reserva::findOrFail($id);
+        return view('reservas.edit', compact('ambientes', 'users', 'reserva'));
     }
 
-    public function update(Request $request, Reserva $reserva)
+    public function update(Request $request,  $id)
     {
-        $reserva->update($request->all());
+        $reserva = Reserva::find($id);
+        $reserva->nombre = $request->nombrereserva;
+        $reserva->descripcion = $request->descripcionreserva;
+        $reserva->precio = $request->precioreserva;
+        $reserva->fecha_ini = $request->fechainireserva;
+        $reserva->fecha_fin = $request->fechafinreserva;
+        $reserva->ambiente_id = $request->input('ambiente_id');
+        $reserva->user_id = $request->input('user_id');
+        $reserva->save();
+
         return redirect()->route('reservas.index');
     }
 

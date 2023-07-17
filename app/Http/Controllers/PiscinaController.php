@@ -59,3 +59,6 @@ class PiscinaController extends Controller
         return redirect()->route('piscinas.index');
     }
 }
+
+
+
