@@ -144,14 +144,14 @@
                                                     </button>
                                                 </a
 
-                                                <a href=""><button type="button"
+                                               {{--  <a href=""><button type="button"
                                                         class="btn btn-sm btn-outline-secondary bg-white">
                                                         <i class="fas fa-edit"></i> Ver </button></a>
 
 
 
                                                 <button type="button" class="btn btn-sm btn-outline-secondary bg-white">
-                                                    <i class="fas fa-trash"></i> Eliminar
+                                                    <i class="fas fa-trash"></i> Eliminar --}}
                                                 </button>
                                             </div>
                                         </div>

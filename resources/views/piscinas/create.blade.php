@@ -168,7 +168,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-info">Añadir Sucursal</button>
+                    <button type="submit" class="btn btn-info">Añadir Reserva</button>
                 </form>
             </div>
         </div>

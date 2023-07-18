@@ -136,7 +136,7 @@
                                         </p>
                                         <p class="card-text" style="color: #ffffff;">{{ $sucursal->hora }}
                                         </p> --}}
-                                        <div class="d-flex justify-content-between align-items-center">
+                                   {{--      <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
 
                                                 <a href=""><button type="button"
@@ -151,7 +151,11 @@
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </button>
                                             </div>
-                                        </div>
+                                        </div> --}}
+
+
+
+
                                     </div>
                                 </div>
                             </div>

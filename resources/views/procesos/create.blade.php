@@ -108,7 +108,7 @@
         </div>
         <div class="card mb-4" style="margin-top: 50px;">
             <div class="card-header pb-0">
-                <h6>Crear Piscina</h6>
+                <h6>Crear Proceso</h6>
             </div>
             <div class="card-body">
                 <form action="{{ route('procesos.store') }}" method="POST" role="form text-left"

@@ -139,7 +139,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
 
-                                                <a href=""><button type="button"
+                                                {{-- <a href=""><button type="button"
                                                         class="btn btn-sm btn-outline-secondary bg-white">
                                                         <i class="fas fa-edit"></i> Editar </button></a>
 
@@ -149,7 +149,7 @@
 
                                                 <button type="button" class="btn btn-sm btn-outline-secondary bg-white">
                                                     <i class="fas fa-trash"></i> Eliminar
-                                                </button>
+                                                </button> --}}
                                             </div>
                                         </div>
                                     </div>
