@@ -166,11 +166,7 @@
                         <label for="descripcionproceso" class="form-label">Descripción dela Sucursal</label>
                         <textarea class="form-control" name="descripcionproceso" id="descripcionproceso" rows="3" require></textarea>
                     </div>
-                    <!--
-                                <div class="mb-4">
-                                    <label for="archivosucursal" class="form-label">Subir Archivos</label>
-                                    <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                                </div> -->
+                  
                     <button type="submit" class="btn btn-info">Añadir proceso</button>
                 </form>
             </div>

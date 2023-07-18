@@ -31,27 +31,27 @@ class ProcesoController extends Controller
         $proceso->nombre = $request->nombreproceso;
         $proceso->descripcion = $request->descripcionproceso;
 
-        $proceso->ph_esperado = $request->ph_esperado;//imput fijos
+        $proceso->ph_esperado = $request->ph_esperado; //imput fijos
 
-        $proceso->cloro_esperado = $request->cloro_esperado;//imput fijos
+        $proceso->cloro_esperado = $request->cloro_esperado; //imput fijos
 
-        $proceso->volumen_pro = $request->input('volumen_pro');//input variable
+        $proceso->volumen_pro = $request->input('volumen_pro'); //input variable
 
-        $path = $request->file('urlPH')->store('piscina', 's3');//guardar las imagenes del ph  en s3
+        $path = $request->file('urlPH')->store('piscina', 's3'); //guardar las imagenes del ph  en s3
         $proceso->urlPH = Storage::disk('s3')->url($path);
-        $path2 = $request->file('urlCL')->store('piscina', 's3');//guardar las imagenes del cloro en s3
+        $path2 = $request->file('urlCL')->store('piscina', 's3'); //guardar las imagenes del cloro en s3
         $proceso->urlCL = Storage::disk('s3')->url($path2);
 
-        $DominantColorsPH = $this->ImagePropeties($proceso->urlPH);//obtener los colores dominantes de la imagen del ph
+        $DominantColorsPH = $this->ImagePropeties($proceso->urlPH); //obtener los colores dominantes de la imagen del ph
         $DominantColorsCL = $this->ImagePropeties($proceso->urlCL);
 
-        $proceso->ph_inicial = $this->CalculatePH($DominantColorsPH);//funcion de identificacion de colores de PH
-        $proceso->cloro_inicial = $this->CalculateCL($DominantColorsCL);//funcion de identificacion de colores de CL
+        $proceso->ph_inicial = $this->CalculatePH($DominantColorsPH); //funcion de identificacion de colores de PH
+        $proceso->cloro_inicial = $this->CalculateCL($DominantColorsCL); //funcion de identificacion de colores de CL
 
 
 
-        $proceso->ph_final = $proceso->calcularCantidadpH();//calcular la cantidad de ph
-        $proceso->cloro_final = $proceso->calcularCantidadCloro();//calcular la cantidad de cloro
+        $proceso->ph_final = $proceso->calcularCantidadpH(); //calcular la cantidad de ph
+        $proceso->cloro_final = $proceso->calcularCantidadCloro(); //calcular la cantidad de cloro
         $proceso->save();
 
         return redirect()->route('procesos.index');
@@ -98,6 +98,8 @@ class ProcesoController extends Controller
                 $ph = 7.6;
             } else if ($color['CSSColor'] === 'palevioletred') {
                 $ph = 7.4;
+            } else if ($color['CSSColor'] === 'sienna') {
+                $ph = 6.8;
             }
         }
         return $ph;
@@ -107,15 +109,23 @@ class ProcesoController extends Controller
     {
         $cl = 0;
         foreach ($colors as $color) {
-            if ($color['CSSColor'] === 'saddlebrown') {
-                $cl = 3;
-            } else if ($color['CSSColor'] === 'sienna') {
+           if ($color['CSSColor'] === 'darkgrey') {
+                $cl = 0.5;
+            }else if ($color['CSSColor'] === 'sienna') {
                 $cl = 5;
+            } else if ($color['CSSColor'] === 'gainsboro') {
+                $cl = 1;
+            }else if ($color['CSSColor'] === 'darkkhaki') {
+                $cl = 1.5;
+            }else if ($color['CSSColor'] === 'goldenrod') {
+                $cl = 2;
+            }else if ($color['CSSColor'] === 'saddlebrown') {
+                $cl = 3;
             }
         }
         return $cl;
     }
-
+  //  goldenrod
     public function show(Proceso $reserva)
     {
         return view('procesos.show', compact('proceso'));
@@ -140,21 +150,3 @@ class ProcesoController extends Controller
 }
 
 
-
-        /* $proceso->ph_final = $request->ph_final;
-        $proceso->cloro_final = $request->cloro_final; */
-        /*    $proceso->urlPH = $request->urlPH;
-        
-        $proceso->urlCL = $request->urlCL; */
-       
-        // $piscina->sucursal_id = $request->input('sucursal_id');
-     // Lógica para el pH y cloro final
-      
-
- /*        $cloroFinalCalculado = $proceso->calcularCantidadCloro($proceso->cloro_inicial, $proceso->cloro_final, $proceso->cloro_esperado);
-        $proceso->cloro_final = $cloroFinalCalculado['cantidadCloro'];
-
-        $phFinalCalculado = $proceso->calcularCantidadpH($proceso->ph_inicial, $proceso->ph_final, $proceso->ph_esperado);
-        $proceso->ph_final = $phFinalCalculado['cantidadPH']; */
-        /* 
-        $proceso->piscina_id = $request->input('piscina_id'); */

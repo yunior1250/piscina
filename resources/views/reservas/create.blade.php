@@ -126,9 +126,10 @@
                             <label for="fechainireserva" class="form-label">Fecha Inicio</label>
                             <input type="date" name="fechainireserva" class="form-control" id="fechainireserva" require>
                         </div>
+
                         <div class="col-md-4">
                             <label for="ambiente_id" class="form-label">Ambientes</label>
-                            <select name="ambiente_id" class="form-control" id="ambiente_id">
+                            <select name="ambiente_id" class="form-select" id="ambiente_id">
                                 @foreach ($ambientes as $ambiente)
                                     <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
                                 @endforeach
@@ -138,7 +139,9 @@
                             <label for="user_id" class="form-label">Clientes</label>
                             <select name="user_id" class="form-control" id="user_id">
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                    @if ($user->rol == 'usuario')
+                                        <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

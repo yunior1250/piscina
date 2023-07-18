@@ -81,6 +81,12 @@ Route::get('/reservas/{id}/edit', [ReservaController::class, 'edit'])->name('res
 Route::put('/reservas/{id}', [ReservaController::class, 'update'])->name('reservas.update');
 Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
 
+
+Route::get('/reservas/compras', [ReservaController::class, 'compras'])->name('reservas.compras');
+Route::get('/reservas/{evento_id}', [ReservaController::class, 'comprasreser'])->name('reservas.comprasreser');
+
+Route::post('/reservas/compra/{id}', [ReservaController::class, 'comprados'])->name('reservas.comprados');
+
 /* 
 Procesos  */
 Route::get('/procesos', [ProcesoController::class, 'index'])->name('procesos.index');

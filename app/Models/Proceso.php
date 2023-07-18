@@ -36,13 +36,17 @@ class Proceso extends Model
         $cloroDeseado = $this->cloro_esperado;
         $cantidadPorLitro = 1.5; // gramos/1000 litros
         
-
-        $cantidadCloroPorLitros = ($cantidadPorLitro / 1000) * $volumenLitros;  //42
-        $diferenciaCloro = $cloroDeseado - $cloroInicial;
-        $diferenciaCloroGramos = ($diferenciaCloro * $volumenLitros) / 1000;  //0
-        $cantidadTotalCloro = $cantidadCloroPorLitros + $diferenciaCloroGramos;
-
-        return $cantidadTotalCloro;
+        if($cloroInicial < $cloroDeseado){
+            $cantidadCloroPorLitros = ($cantidadPorLitro / 1000) * $volumenLitros;  //42
+            $diferenciaCloro = $cloroDeseado - $cloroInicial;
+            $diferenciaCloroGramos = ($diferenciaCloro * $volumenLitros) / 1000;  //0
+            $cantidadTotalCloro = $cantidadCloroPorLitros + $diferenciaCloroGramos;
+    
+            return "La cantidad de Cloro que se debe aumentar es: " .  $cantidadTotalCloro;
+        }else{
+            return "Debe espera 5hr de reposo sui su piscina esta co contacto directo al sol y 8 horas si esta bajo techo";
+        }
+    
     }
 
 
@@ -57,16 +61,16 @@ class Proceso extends Model
         if ($pHInicial > $pHEsperado) {
             $diferenciaPH = $pHInicial - $pHEsperado;
             $cantidadAcidoClorhidrico = ($volumenLitros * $diferenciaPH) / $capacidadNeutralizacion;
-            return $cantidadAcidoClorhidrico;
+            return  "El reductor de ph es:  ". $cantidadAcidoClorhidrico;
         } else {
             $diferenciaPH = $pHEsperado - $pHInicial;
             $diferenciaPHGramos = $diferenciaPH * $volumenLitros;
             $cantidadTotalPH = $cantidadPorLitro * $volumenLitros + $diferenciaPHGramos;
-            return $cantidadTotalPH;
+            return   "La cantidade de aumentador de ph es:". $cantidadTotalPH;
         }
     }
     /*     public function calcularCantidadCloro()
-    {
+    {La cantidade de aumentador de ph es:
         $volumenLitros = $this->volumen_pro;
         $cloroInicial = $this->clo_inicial;
         $cloroDeseado = $this->clo_esperado;
