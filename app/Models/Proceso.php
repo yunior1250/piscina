@@ -36,7 +36,7 @@ class Proceso extends Model
         $cloroDeseado = $this->cloro_esperado;
         $cantidadPorLitro = 1.5; // gramos/1000 litros
         
-        //$prueva =  $this->clo_esperado   ;
+
         $cantidadCloroPorLitros = ($cantidadPorLitro / 1000) * $volumenLitros;  //42
         $diferenciaCloro = $cloroDeseado - $cloroInicial;
         $diferenciaCloroGramos = ($diferenciaCloro * $volumenLitros) / 1000;  //0

@@ -70,36 +70,49 @@ class DatabaseSeeder extends Seeder
 
         /* Sucursal  */
 
-
+/* 
+https://yunior-gp-s3.s3.amazonaws.com/sucursal/1689677911_sucursal1.jpg
+https://yunior-gp-s3.s3.amazonaws.com/sucursal/1689677989_sucusal2.jpg
+https://yunior-gp-s3.s3.amazonaws.com/sucursal/1689678070_sucursal3.jpg
+https://yunior-gp-s3.s3.amazonaws.com/sucursal/1689678151_sucursal4.jpg
+*/
         DB::table('sucursales')->insert([
-            'nombre' => 'Sucursal 1',
-            'descripcion' => 'Sucursal ubicado por vivru viru',
-            'telefono' => '1234567',
+            'nombre' => 'Sucursal Zona Sur',
+            'descripcion' => 'Sucursal ubiacaos por la zona sur',
+            'telefono' => '75302483',
             'direccion' => 'https://maps.app.goo.gl/SPQuE8kop77airbq6',
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/sucursal/1689677911_sucursal1.jpg'
 
         ]);
         DB::table('sucursales')->insert([
-            'nombre' => 'Sucursal 2',
-            'descripcion' => 'Sucursal ubicado por cambodromo',
-            'telefono' => '1234567',
+            'nombre' => 'Sucursal Zona Norte',
+            'descripcion' => 'Sucursal ubicado por la zona norte',
+            'telefono' => '75302483',
             'direccion' => 'https://maps.app.goo.gl/yEXdCdbA7HmJscMN9',
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/sucursal/1689678070_sucursal3.jpg'
 
         ]);
 
         /* Ambiente */
-
+/* 
+https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689683815_CanchaDeTenis.jpg
+https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689683944_CanchaDeFutsal.jpg
+https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689684031_CanchaDeVoley.jpg
+*/
         DB::table('ambientes')->insert([
-            'nombre' => 'Ambiente 1',
-            'descripcion' => 'Ambiente ubicado por vivru viru',
-            'capacidad' => '10',
+            'nombre' => 'Cancha de Tenis',
+            'descripcion' => 'Cancha de tenias de la zona Sur',
+            'capacidad' => '12',
             'sucursal_id' => '1',
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689683815_CanchaDeTenis.jpg'
 
         ]);
         DB::table('ambientes')->insert([
-            'nombre' => 'Ambiente 2',
-            'descripcion' => 'Ambiente ubicado por cambodromo',
+            'nombre' => 'Cancha de Voley',
+            'descripcion' => 'Cancah de Voley de la zona Norte',
             'capacidad' => '10',
             'sucursal_id' => '2',
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689684031_CanchaDeVoley.jpg'
 
         ]);
 
@@ -127,6 +140,12 @@ class DatabaseSeeder extends Seeder
 
 
         /*piscina*/
+        /* 
+        https://yunior-gp-s3.s3.amazonaws.com/piscina/1689687389_piscina1.jpg
+        https://yunior-gp-s3.s3.amazonaws.com/piscina/1689687576_piscina4.jpg
+        https://yunior-gp-s3.s3.amazonaws.com/piscina/1689687779_piscina3.jpg
+        
+        */
 
         DB::table('piscinas')->insert([
             'nombre' => 'piscina 1',
@@ -138,6 +157,7 @@ class DatabaseSeeder extends Seeder
             'radio' => '0.00',
             'volumen' => '72.00',
             'sucursal_id' => '1',
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/piscina/1689687389_piscina1.jpg'
 
         ]);
 
@@ -151,7 +171,20 @@ class DatabaseSeeder extends Seeder
             'radio' => '0.00',
             'volumen' => '90.00',
             'sucursal_id' => '2',
-
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/piscina/1689687576_piscina4.jpg'
         ]);
+        DB::table('piscinas')->insert([
+            'nombre' => 'piscina 2',
+            'descripcion' => 'piscina ubicado por cambodromo',
+            'tipo' => 'rectangular',
+            'largo' => '6.00',
+            'ancho' => '5.00',
+            'profundidad' => '3.00',
+            'radio' => '0.00',
+            'volumen' => '90.00',
+            'sucursal_id' => '2',
+            'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/piscina/1689687779_piscina3.jpg'
+        ]);
+        
     }
 }

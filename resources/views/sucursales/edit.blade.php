@@ -116,7 +116,7 @@
                     @method('PUT')
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label for="nombresucursal" class="form-label">Nombre de la Piscinas</label>
+                            <label for="nombresucursal" class="form-label">Nombre de la Sucursal</label>
                             <input type="text" name="nombresucursal" class="form-control" id="nombresucursal" value="{{ $sucursal->nombre }}" require>
                         </div>
                         <div class="col-md-4">
@@ -130,9 +130,10 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="descripcionsucursal" class="form-label">Descripción dela Sucursal</label>
-                        <textarea class="form-control" name="descripcionsucursal" id="descripcionsucursal" rows="3" require></textarea>
+                        <label for="descripcionsucursal" class="form-label">Descripción de la Sucursal</label>
+                        <textarea class="form-control" name="descripcionsucursal" id="descripcionsucursal" rows="3" required>{{ $sucursal->descripcion }}</textarea>
                     </div>
+                    
                     {{-- 
                     <div class="mb-4">
                         <label for="archivosucursal" class="form-label">Subir Archivos</label>

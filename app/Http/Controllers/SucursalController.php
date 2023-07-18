@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SucursalController extends Controller
 {
@@ -23,6 +24,17 @@ class SucursalController extends Controller
     $sucursal->descripcion = $request->descripcionsucursal;
     $sucursal->telefono = $request->telefonosucursal;
     $sucursal->direccion = $request->direccionsucursal;
+
+    if ($request->hasFile('fotosucursal')) {
+      $file = $request->file('fotosucursal');
+      $fileName = time() . '_' . $file->getClientOriginalName();
+      $directory = 'sucursal' ;
+
+      Storage::disk('s3')->putFileAs($directory, $file, $fileName, 'public');
+      $fileUrl = Storage::disk('s3')->url($directory . '/' . $fileName);
+
+      $sucursal->foto = $fileUrl;
+  }
     //$sucursal->imagen = $request->archivosucursal;
     // $sucursal->organizadorId = Auth::user()->id;
     $sucursal->save();

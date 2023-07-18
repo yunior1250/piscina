@@ -6,6 +6,7 @@ use App\Models\Ambiente;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AmbienteController extends Controller
 {
@@ -28,14 +29,16 @@ class AmbienteController extends Controller
         $ambiente->nombre = $request->nombreambiente;
         $ambiente->descripcion = $request->descripcionambiente;
         $ambiente->capacidad = $request->capacidadambiente;
-        // $ambiente->imagen = $request->archivoambiente;
-        //   $ambiente->organizadorId = Auth::user()->id;
-        if ($request->hasFile('archivoambiente')) {
-            $imagen = $request->file('archivoambiente');
-            $rutaImagen = $imagen->store('public/imagenes'); // Cambia la ruta según tus necesidades
-            $ambiente->imagen = $rutaImagen;
+        if ($request->hasFile('fotoambiente')) {
+            $file = $request->file('fotoambiente');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $directory = 'ambiente' ;
+      
+            Storage::disk('s3')->putFileAs($directory, $file, $fileName, 'public');
+            $fileUrl = Storage::disk('s3')->url($directory . '/' . $fileName);
+      
+            $ambiente->foto = $fileUrl;
         }
-        //$sucursal = Sucursal::findOrFail($request->sucursal);
         $ambiente->sucursal_id = $request->input('sucursal_id');
         $ambiente->save();
 
@@ -61,7 +64,11 @@ class AmbienteController extends Controller
         $ambiente->nombre = $request->nombreambiente;
         $ambiente->descripcion = $request->descripcionambiente;
         $ambiente->capacidad = $request->capacidadambiente;
+        
+      
         $ambiente->sucursal_id = $request->input('sucursal_id');
+
+
         $ambiente->save();
 
         return redirect()->route('ambientes.index');

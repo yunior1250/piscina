@@ -132,18 +132,12 @@
                                 @endforeach
                             </select>
                         </div>
-                        
                     </div>
 
                     <div class="mb-3">
                         <label for="descripcionambiente" class="form-label">Descripción del ambiente</label>
-                        <textarea class="form-control" name="descripcionambiente" id="descripcionambiente" rows="3" require></textarea>
+                        <textarea class="form-control" name="descripcionambiente" id="descripcionambiente" rows="3" require>{{ $ambiente->descripcion }}</textarea>
                     </div>
-
-                   {{--  <div class="mb-4">
-                        <label for="archivoambiente" class="form-label">Subir Archivos</label>
-                        <input type="file" class="form-control" name="archivoambiente" id="archivoambiente">
-                    </div> --}}
 
                     <button type="submit" class="btn btn-info">Actulizar  ambiente</button>
                 </form>

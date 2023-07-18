@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Piscina;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PiscinaController extends Controller
 {
@@ -33,6 +34,18 @@ class PiscinaController extends Controller
         $volumen = $piscina->calcularVolumen();
         $piscina->volumen = $volumen;
         $piscina->sucursal_id = $request->input('sucursal_id');
+
+        
+    if ($request->hasFile('fotopiscina')) {
+        $file = $request->file('fotopiscina');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $directory = 'piscina' ;
+  
+        Storage::disk('s3')->putFileAs($directory, $file, $fileName, 'public');
+        $fileUrl = Storage::disk('s3')->url($directory . '/' . $fileName);
+  
+        $piscina->foto = $fileUrl;
+    }
         $piscina->save();
 
         return redirect()->route('piscinas.index')->with('success', 'Piscina creada exitosamente. Volumen: ' . $volumen);

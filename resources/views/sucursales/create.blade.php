@@ -115,7 +115,7 @@
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label for="nombresucursal" class="form-label">Nombre de la Piscinas</label>
+                            <label for="nombresucursal" class="form-label">Nombre de la Sucursal</label>
                             <input type="text" name="nombresucursal" class="form-control" id="nombresucursal" require>
                         </div>
                         <div class="col-md-4">
@@ -132,11 +132,18 @@
                         <label for="descripcionsucursal" class="form-label">Descripción dela Sucursal</label>
                         <textarea class="form-control" name="descripcionsucursal" id="descripcionsucursal" rows="3" require></textarea>
                     </div>
-{{-- 
-                    <div class="mb-4">
-                        <label for="archivosucursal" class="form-label">Subir Archivos</label>
-                        <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                    </div> --}}
+
+
+
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="fotosucursal">Foto de Sucursal</label>
+                            <input type="file" class="form-control" id="fotosucursal" name="fotosucursal">
+                        </div>
+                    </div>
+
+            
                     <button type="submit" class="btn btn-info">Añadir Sucursal</button>
                 </form>
             </div>

@@ -150,11 +150,15 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="descripcionreserva" class="form-label">Descripción del reserva</label>
-                        <textarea class="form-control" name="descripcionreserva" id="descripcionreserva" rows="3" require></textarea>
+                        <label for="descripcionreserva" class="form-label">Descripción de la reserva</label>
+                        <textarea class="form-control" name="descripcionreserva" id="descripcionreserva" rows="3" require>{{ $ambiente->descripcion }}</textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-info">Actulizar reserva</button>
+
+             
+
+
+                    <button type="submit" class="btn btn-info">Actualizar reserva</button>
                 </form>
             </div>
         </div>

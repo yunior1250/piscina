@@ -108,7 +108,7 @@
         <div class="col-12 mt-4">
             <div class="card mb-4" style="padding: 50px;">
                 <div class="card-body p-0">
-                    <h1 class="card-title pb-0 pt-0 m-0 mb-2" style="font-size: 2.4rem">Pisicnas</h1>
+                    <h1 class="card-title pb-0 pt-0 m-0 mb-2" style="font-size: 2.4rem">Piscina</h1>
                     <div class="d-flex justify-content-end mb-0">
                         <button type="button" class="btn btn-info">
                             <a href="{{ route('piscinas.create') }}" style="color: white"> <i class="fas fa-plus"> </i>
@@ -121,7 +121,7 @@
                         @foreach ($piscinas as $piscina)
                             <div class="col-md-4 mb-4 ">
                                 <div class="card bg-info" style="margin-right: 1rem;">
-                                    <img src="/img/playa.jpg"
+                                    <img src="{{ $piscina->foto }}"
                                         class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title"style="color: #ffffff;">{{ $piscina->nombre }}</h5>

@@ -144,7 +144,7 @@
                             <input type="text" name="radiopiscina" class="form-control" id="radiopiscina" require>
                         </div>
                         <div class="col-md-4">
-                            <label for="sucursal_id" class="form-label">Piscina</label>
+                            <label for="sucursal_id" class="form-label">Sucursales</label>
                             <select name="sucursal_id" class="form-control" id="sucursal_id">
                                 @foreach ($sucursales as $sucursal)
                                     <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
@@ -157,11 +157,17 @@
                         <label for="descripcionpisicna" class="form-label">Descripción dela Sucursal</label>
                         <textarea class="form-control" name="descripcionpisicna" id="descripcionpisicna" rows="3" require></textarea>
                     </div>
-{{-- 
-                    <div class="mb-4">
-                        <label for="archivosucursal" class="form-label">Subir Archivos</label>
-                        <input type="file" class="form-control" name="archivosucursal" id="archivosucursal">
-                    </div> --}}
+  
+                  
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="fotopiscina">Foto de Piscina</label>
+                            <input type="file" class="form-control" id="fotopiscina" name="fotopiscina">
+                        </div>
+                    </div>
+
+
                     <button type="submit" class="btn btn-info">Añadir Sucursal</button>
                 </form>
             </div>

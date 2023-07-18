@@ -124,7 +124,7 @@
                         @foreach ($sucursales as $sucursal)
                             <div class="col-md-4 mb-4 ">
                                 <div class="card bg-info" style="margin-right: 1rem;">
-                                    <img src="/img/playa.jpg" class="card-img-top" alt="...">
+                                    <img src="{{ $sucursal->foto }}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title"style="color: #ffffff;">{{ $sucursal->nombre }}</h5>
                                         <p class="card-text" style="color: #ffffff;">{{ $sucursal->descripcion }}</p>

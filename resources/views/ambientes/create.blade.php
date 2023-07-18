@@ -139,10 +139,13 @@
                         <textarea class="form-control" name="descripcionambiente" id="descripcionambiente" rows="3" require></textarea>
                     </div>
 
-                   {{--  <div class="mb-4">
-                        <label for="archivoambiente" class="form-label">Subir Archivos</label>
-                        <input type="file" class="form-control" name="archivoambiente" id="archivoambiente">
-                    </div> --}}
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="fotoambiente">Foto del ambiente</label>
+                            <input type="file" class="form-control" id="fotoambiente" name="fotoambiente">
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-info">Añadir ambiente</button>
                 </form>
             </div>

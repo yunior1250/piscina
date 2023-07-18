@@ -13,7 +13,7 @@ class Ambiente extends Model
         'nombre',
         'descripcion',
         'capasidad',
-        'imagen',
+        'foto',
         'sucursal_id'
     ];
     protected $dates = [
