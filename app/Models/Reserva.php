@@ -13,8 +13,9 @@ class Reserva extends Model
         'nombre',
         'descripcion',
         'precio',
-        'fecha_ini',
-        'fecha_fin',
+        'fecha', 
+        'hora_inicio',
+        'hora_final',
         'ambinete_id',
         'user_id'
     ];
@@ -22,4 +23,9 @@ class Reserva extends Model
         'fecha',
         'hora'
     ];
+
+ /*    public function ambiente()
+    {
+        return $this->belongsTo(Ambiente::class, 'ambiente_id');
+    } */
 }

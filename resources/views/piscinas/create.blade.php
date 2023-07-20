@@ -158,8 +158,6 @@
                         <textarea class="form-control" name="descripcionpisicna" id="descripcionpisicna" rows="3" require></textarea>
                     </div>
   
-                  
-
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="fotopiscina">Foto de Piscina</label>
@@ -167,8 +165,7 @@
                         </div>
                     </div>
 
-
-                    <button type="submit" class="btn btn-info">Añadir Reserva</button>
+                    <button type="submit" class="btn btn-info">Añadir piscina</button>
                 </form>
             </div>
         </div>

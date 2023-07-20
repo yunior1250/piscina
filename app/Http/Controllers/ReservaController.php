@@ -6,6 +6,7 @@ use App\Models\Ambiente;
 use App\Models\Reserva;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservaController extends Controller
 {
@@ -26,25 +27,29 @@ class ReservaController extends Controller
 
     public function store(Request $request)
     {
-        $reserva = new Reserva();
-        $reserva->nombre = $request->nombrereserva;
-        $reserva->descripcion = $request->descripcionreserva;
-        $reserva->precio = $request->precioreserva;
-        $reserva->fecha_ini = $request->fechainireserva;
-        $reserva->fecha_fin = $request->fechafinreserva;
-        // $ambiente->imagen = $request->archivoambiente;
-        //   $ambiente->organizadorId = Auth::user()->id;
-        if ($request->hasFile('archivoambiente')) {
-            $imagen = $request->file('archivoambiente');
-            $rutaImagen = $imagen->store('public/imagenes'); // Cambia la ruta según tus necesidades
-            $reserva->imagen = $rutaImagen;
-        }
-        //$sucursal = Sucursal::findOrFail($request->sucursal);
-        $reserva->ambiente_id = $request->input('ambiente_id');
-        $reserva->user_id = $request->input('user_id');
-        $reserva->save();
+       // Crear la reserva
+    $reserva = new Reserva();
+    $reserva->nombre = $request->nombrereserva;
+    $reserva->descripcion = $request->descripcionreserva;
+    $reserva->precio = $request->precioreserva;
+    $reserva->fecha = $request->fechareserva;
 
-        return redirect()->route('reservas.index');
+    // Combine date and time to create a valid datetime value for hora_inicio
+    $reserva->hora_inicio = $request->fechareserva . ' ' . $request->horainireserva;
+
+    // Combine date and time to create a valid datetime value for hora_final
+    $reserva->hora_final = $request->fechareserva . ' ' . $request->horafinreserva;
+
+    $reserva->ambiente_id = $request->input('ambiente_id');
+    $reserva->user_id = $request->input('user_id');
+    $reserva->save();
+
+    // Actualizar el estado del ambiente a ocupado
+    $ambiente = Ambiente::find($request->input('ambiente_id'));
+    $ambiente->estado = 'ocupado'; // Change 'ocupado' to the appropriate value if needed
+    $ambiente->save();
+
+    return redirect()->route('reservas.index');
     }
 
     public function show(Reserva $reserva)
@@ -71,13 +76,32 @@ class ReservaController extends Controller
         $reserva->ambiente_id = $request->input('ambiente_id');
         $reserva->user_id = $request->input('user_id');
         $reserva->save();
-
         return redirect()->route('reservas.index');
     }
 
     public function destroy(Reserva $reserva)
     {
-        $reserva->delete();
-        return redirect()->route('reservas.index');
+       
+       // Store the ambiente ID before deleting the reservation
+    $ambienteId = $reserva->ambiente_id;
+
+    // Delete the reserva
+    $reserva->delete();
+
+    // Update the estado of the ambiente to 'disponible'
+    $ambiente = Ambiente::find($ambienteId);
+    $ambiente->estado = 'disponible'; // Change 'disponible' to the appropriate value if needed
+    $ambiente->save();
+
+    return redirect()->route('reservas.index')->with('success', 'Reserva eliminada exitosamente.');
+    }
+
+    public function mireserva()
+    {
+        $reservas = Reserva::all();
+        $users = User::all();
+        $ambientes = Ambiente::all();
+        return view('reservas.mireserva', compact('reservas', 'users', 'ambientes'));
+
     }
 }

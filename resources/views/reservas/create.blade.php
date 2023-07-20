@@ -123,18 +123,36 @@
                             <input type="number" name="precioreserva" class="form-control" id="precioreserva" require>
                         </div>
                         <div class="col-md-4">
-                            <label for="fechainireserva" class="form-label">Fecha Inicio</label>
-                            <input type="date" name="fechainireserva" class="form-control" id="fechainireserva" require>
+                            <label for="horainireserva" class="form-label">Hora Inicio</label>
+                            <input type="time" name="horainireserva" class="form-control" id="horainireserva" require>
                         </div>
-
                         <div class="col-md-4">
                             <label for="ambiente_id" class="form-label">Ambientes</label>
                             <select name="ambiente_id" class="form-select" id="ambiente_id">
-                                @foreach ($ambientes as $ambiente)
-                                    <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
-                                @endforeach
+                                @php
+                                    $ambientesDisponibles = $ambientes->where('estado', 'disponible');
+                                @endphp
+                        
+                                @if ($ambientesDisponibles->isEmpty())
+                                    <option value="" disabled>No hay ambientes disponibles para reservar</option>
+                                @else
+                                    @foreach ($ambientesDisponibles as $ambiente)
+                                        <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
+                        
+                        {{-- <div class="col-md-4">
+                            <label for="ambiente_id" class="form-label">Ambientes</label>
+                            <select name="ambiente_id" class="form-select" id="ambiente_id">
+                                @foreach ($ambientes as $ambiente)
+                                    @if ($ambiente->estado == 'disponible')
+                                        <option value="{{ $ambiente->id }}">{{ $ambiente->nombre }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div> --}}
                         <div class="col-md-4">
                             <label for="user_id" class="form-label">Clientes</label>
                             <select name="user_id" class="form-control" id="user_id">
@@ -146,9 +164,14 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label for="fechafinreserva" class="form-label">Fecha Final</label>
-                            <input type="date" name="fechafinreserva" class="form-control" id="fechafinreserva"
+                            <label for="horafinreserva" class="form-label">Hora Final</label>
+                            <input type="time" name="horafinreserva" class="form-control" id="horafinreserva"
                                 require>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="fechareserva" class="form-label">Fecha de la reserva</label>
+                            <input type="date" name="fechareserva" class="form-control" id="fechareserva" require>
                         </div>
                     </div>
                     <div class="mb-3">

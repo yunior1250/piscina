@@ -105,6 +105,8 @@ class ProcesoController extends Controller
         return $ph;
     }
 
+
+    
     private function CalculateCL($colors)
     {
         $cl = 0;

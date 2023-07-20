@@ -79,13 +79,17 @@ Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.st
 
 Route::get('/reservas/{id}/edit', [ReservaController::class, 'edit'])->name('reservas.edit');
 Route::put('/reservas/{id}', [ReservaController::class, 'update'])->name('reservas.update');
-Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
+Route::delete('/reservas/{reserva}',[ReservaController::class, 'destroy'] )->name('reservas.destroy');
 
+/* Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy'); */
 
+/* 
 Route::get('/reservas/compras', [ReservaController::class, 'compras'])->name('reservas.compras');
 Route::get('/reservas/{evento_id}', [ReservaController::class, 'comprasreser'])->name('reservas.comprasreser');
 
-Route::post('/reservas/compra/{id}', [ReservaController::class, 'comprados'])->name('reservas.comprados');
+Route::post('/reservas/compra/{id}', [ReservaController::class, 'comprados'])->name('reservas.comprados'); */
+
+Route::get('/mireserva', [ReservaController::class, 'mireserva'])->name('reservas.mireserva');
 
 /* 
 Procesos  */

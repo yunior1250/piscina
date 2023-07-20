@@ -13,6 +13,7 @@ class Ambiente extends Model
         'nombre',
         'descripcion',
         'capasidad',
+        'ocupado',
         'foto',
         'sucursal_id'
     ];

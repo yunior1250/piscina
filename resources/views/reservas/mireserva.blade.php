@@ -108,13 +108,13 @@
         <div class="col-12 mt-4">
             <div class="card mb-4" style="padding: 50px;">
                 <div class="card-body p-0">
-                    <h1 class="card-title pb-0 pt-0 m-0 mb-2" style="font-size: 2.4rem">Reservas</h1>
-                    <div class="d-flex justify-content-end mb-0">
+                    <h1 class="card-title pb-0 pt-0 m-0 mb-2" style="font-size: 2.4rem">Mis reservas</h1>
+                   {{--  <div class="d-flex justify-content-end mb-0">
                         <button type="button" class="btn btn-info">
                             <a href="{{ route('reservas.create') }}" style="color: white"> <i class="fas fa-plus"> </i>
                                 Crear reserva</a>
                         </button>
-                    </div>
+                    </div> --}}
                     {{-- Si Fotografo->id == Afiliacion->User  --}}
 
 
@@ -122,19 +122,20 @@
                     <div class="row flex-wrap">
                         <!-- ambiente -->
                         @foreach ($reservas as $reserva)
+                        @if ($reserva->user_id == Auth::user()->id ) 
                             <div class="col-md-4 mb-4 ">
                                 <div class="card bg-info" style="margin-right: 1rem;">
                                     <img src="/img/playa.jpg"
                                         class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h3 class="card-title"style="color: #ffffff;">{{ $reserva->nombre }}</h3>
-                                        <p class="card-text" style="color: #ffffff;">{{ $reserva->descripcion }} </p>
-                                        <h4 class="card-text"style="color: #ffffff;">{{ $reserva->precio }} bs
-                                        </h4>
-                                        <h5 class="card-text"style="color: #3bff0a;">La hora de Inicio: {{ $reserva->hora_inicio }}
-                                        </h5>
-                                        <h5 class="card-text" style="color: #ff0000;">La que finaliza: {{ $reserva->hora_final }}
-                                        </h5>
+                                        <h5 class="card-title"style="color: #ffffff;">{{ $reserva->nombre }}</h5>
+                                        <p class="card-text" style="color: #ffffff;">{{ $reserva->descripcion }}</p>
+                                        <p class="card-text"style="color: #ffffff;">{{ $reserva->presio }}
+                                        </p>
+                                        <p class="card-text"style="color: #ffffff;">{{ $reserva->fecha_ini }}
+                                        </p>
+                                        <p class="card-text" style="color: #ffffff;">{{ $reserva->fecha_fin }}
+                                        </p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
 
@@ -142,19 +143,23 @@
                                                     <button type="button" class="btn btn-sm btn-outline-secondary">
                                                         <i class="fas fa-edit"></i> Editar
                                                     </button>
-                                                </a>
-                                                <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Estás seguro de eliminar esta reserva?')">
-                                                        <i class="fas fa-trash-alt"></i> Eliminar
-                                                    </button>
-                                                </form>
+                                                </a
+
+                                               {{--  <a href=""><button type="button"
+                                                        class="btn btn-sm btn-outline-secondary bg-white">
+                                                        <i class="fas fa-edit"></i> Ver </button></a>
+
+
+
+                                                <button type="button" class="btn btn-sm btn-outline-secondary bg-white">
+                                                    <i class="fas fa-trash"></i> Eliminar --}}
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         @endforeach
                     </div>
 

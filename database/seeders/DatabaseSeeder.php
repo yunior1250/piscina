@@ -99,7 +99,7 @@ https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689683815_CanchaDeTenis.jpg
 https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689683944_CanchaDeFutsal.jpg
 https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689684031_CanchaDeVoley.jpg
 */
-        DB::table('ambientes')->insert([
+       /*  DB::table('ambientes')->insert([
             'nombre' => 'Cancha de Tenis',
             'descripcion' => 'Cancha de tenias de la zona Sur',
             'capacidad' => '12',
@@ -115,9 +115,9 @@ https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689684031_CanchaDeVoley.jpg
             'foto' => 'https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689684031_CanchaDeVoley.jpg'
 
         ]);
-
+ */
         /* Reservas */
-        DB::table('reservas')->insert([
+       /*  DB::table('reservas')->insert([
             'nombre' => 'reserva 1',
             'descripcion' => 'reserva de espacio',
             'precio' => '10',
@@ -136,7 +136,7 @@ https://yunior-gp-s3.s3.amazonaws.com/ambiente/1689684031_CanchaDeVoley.jpg
             'ambiente_id' => '2',
             'user_id' => '2',
 
-        ]);
+        ]); */
 
 
         /*piscina*/
